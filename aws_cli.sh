@@ -9,3 +9,16 @@ aws ec2 describe-availability-zones --query "AvailabilityZones[?ZoneName=='us-ea
 ### to see any service we have describe or list to view all 
 ### To filter output for preference see scope,filter,jmespath
 ### to repeat anything in shell scipt use while
+
+
+
+## create aws instance
+aws ec2 run-instances \
+  --image-id ami-0574da719dca65348 \
+  --instance-type t2.micro \
+  --key-name "keypair" 
+
+## To create tags for the instance
+aws ec2 create-tags \
+  --resources  i-0d186018cd57bc0ef \
+  --tags "Key=project,Value=ec2" "Key=Env,Value=test" "Key=release,Value=v1.0"
